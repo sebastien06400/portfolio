@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Playlist Balavoine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../30projets.css">
+    <link rel="stylesheet" href="projet1.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vesper+Libre&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="filtre">
+      <div class="songs-list">
+          <div class="song-div songbox" data-key="76"><p><span class="big-letter">L</span>e chanteur</p></div>
+          <div class="song-div songbox" data-key="83"><p><span class="big-letter">S</span>.O.S.</p></div>
+          <div class="song-div songbox" data-key="77"><p><span class="big-letter">M</span>on fils ma bataille</p></div>
+          <div class="song-div songbox" data-key="86"><p><span class="big-letter">V</span>ivre ou survivre</p></div>
+          <div class="song-div stop"><img src="stopicon.svg" alt="stop" width="50px"></div>
+      </div>
+      <div class="notice">La touche du clavier et le clic lancent l'audio.</div>
+    </div>
+    <audio data-key="77" src="sounds/bataille.mp3"></audio>
+    <audio data-key="76" src="sounds/le chanteur.mp3"></audio>
+    <audio data-key="83" src="sounds/sos.mp3"></audio>
+    <audio data-key="86" src="sounds/vivre.mp3"></audio>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+body {
+    /* width: 100%; */
+    background-image: url('balavoine.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.filtre {
+    position: relative;
+    top: 5vh;
+    left: 10vh;
+    width: 80%;
+    min-height: 90vh;
+    background-color: rgba(0, 0, 0, 0.83);
+    justify-content: center;
+    display: flex;
+    
+}
+
+.songs-list {
+  display: flex;
+  width: 80vh;
+  justify-content: space-around;
+  align-items: center;
+
+  /* border: red 1px solid; */
+}
+  
+.song-div {
+  font-size: 10px;
+  width: 80px;
+  height: 80px;
+  border: solid black 4px;
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(190, 190, 190, 0.18);
+  text-align: center;
+  transition: all 0.27s ease;
+}
+
+.song-div:hover {
+  background-color: rgba(190, 190, 190, 0.43);
+}
+  
+.big-letter {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.notice {
+  position: absolute;
+  bottom: 24px;
+  left : 24px;
+  color:rgba(255, 255, 255, 0.43)
+}
+
+.stop {
+  position: absolute;
+  bottom: 24px;
+  right : 24px;
+}
+
+.playing {
+  border-color: white;
+  transform: scale(1.3);
+  background-color: rgba(190, 190, 190, 0.08);
+}
