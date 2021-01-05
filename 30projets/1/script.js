@@ -24,6 +24,7 @@ function playMusic(e) {
     notice.classList.add("hidden")
     let content = document.querySelector(`div[lyrics-key="${e.keyCode}"]`) 
     content.classList.add("display")
+    setTimeout(displayLyric, 400, content)
     filterBox.classList.add("stretch")
 };
 
@@ -46,12 +47,12 @@ musicBoxes.forEach(box => box.addEventListener('click', () => {
     let music = document.querySelector(`audio[data-key="${box.attributes[1].value}"]`) 
     stopMusics()
     music.play()
+    notice.classList.add("hidden")
     box.classList.add("playing")
     let content = document.querySelector(`div[lyrics-key="${box.attributes[1].value}"]`) 
     content.classList.add("display")
     setTimeout(displayLyric, 400, content)
     filterBox.classList.add("stretch")
-    notice.classList.add("hidden")
   })
 );
 

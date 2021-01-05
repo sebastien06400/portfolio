@@ -1,6 +1,51 @@
 body {
   font-family: 'Vesper Libre', serif;
-  width: 50vh;
+  width: 60vh;
   margin: auto;
-  height: 1000px;
+  text-align: center;
 }
+
+a {
+  text-decoration: none;
+  color: rgb(255, 115, 0);
+
+}
+
+.flexbox0 {
+  display: flex;
+  justify-content: space-around;
+  width: 50vh;
+  height: auto;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  
+}
+
+.box0 {
+  margin: 0px 10px;
+}
+
+.flexbox1 {
+  display: flex;
+  justify-content: space-around;
+  /* border: red 1px solid; */
+  width: 50vh;
+  height: auto;
+  margin: 0px 20px;
+  padding: 0px 20px;
+
+}
+
+.box1 {
+  /* width: 100px; */
+  /* height: 80px; */
+  /* border: green solid 2px; */
+  font-size: 22px;
+  background-color: black;
+  margin: 0px 20px;
+}
+
+.box1 a {
+  color: orange;
+    }
+
