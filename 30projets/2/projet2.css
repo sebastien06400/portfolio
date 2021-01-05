@@ -47,6 +47,8 @@ body {
   background-color: red;
   transform: rotate(270deg);
   transform-origin: 0%;
+  transition: all 0.1s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.71, 2.27);
 }
 
 

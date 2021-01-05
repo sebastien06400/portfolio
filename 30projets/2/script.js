@@ -94,6 +94,12 @@ const bouttonLangues = document.querySelector(".boutton-langues")
 const langues = document.querySelector(".langues")
 
 
-bouttonLangues.addEventListener("click", () => {
-  langues.classList.toggle("hidden")
+bouttonLangues.addEventListener("click", (event) => {
+    langues.classList.toggle("hidden")
+    if (event.target.innerHTML == "+") {
+      event.target.innerHTML = "-"
+    }
+    else {
+      event.target.innerHTML = "+"
+    }
 })
