@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Horloge</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../30projets.css">
     <link rel="stylesheet" href="projet2.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -16,26 +15,40 @@
       <div class="hour"></div>
       <div class="min"></div>
       <div class="tick"></div>
-      <div class="a1">1</div>      
-      <div class="a2">2</div>      
-      <div class="a3">3</div>      
-      <div class="a4">4</div>      
-      <div class="a5">5</div>      
-      <div class="a6">6</div>      
-      <div class="a7">7</div>      
-      <div class="a8">8</div>      
-      <div class="a9">9</div>      
-      <div class="a10">10</div>      
-      <div class="a11">11</div>      
-      <div class="a12">12</div>
+      <div chiffre="1" class="a1">1</div>      
+      <div chiffre="2" class="a2">2</div>      
+      <div chiffre="3" class="a3">3</div>      
+      <div chiffre="4" class="a4">4</div>      
+      <div chiffre="5" class="a5">5</div>      
+      <div chiffre="6" class="a6">6</div>      
+      <div chiffre="7" class="a7">7</div>      
+      <div chiffre="8" class="a8">8</div>      
+      <div chiffre="9" class="a9">9</div>      
+      <div chiffre="10" class="a10">10</div>      
+      <div chiffre="11" class="a11">11</div>      
+      <div chiffre="12" class="a12">12</div>
       <div class="center"></div>    
 
 
 
     </div>
-    <div> 
-      <!-- <div class="hebreux">hébreux</div> -->
+    <div class="alarme">
+      Alarme :
+      <input type="time" class="alarm-input"> <button class="alarm-button">OK</button>
     </div>
+    
+    <br>
+    <button class="boutton-langues">+</button>
+    <div class="langues hidden"> 
+      <div class="arabe langue">arabe</div>
+      <div class="chinois langue">chinois</div>
+      <div class="coreen langue">coréen</div>
+      <div class="hebreux langue">hébreux</div>
+      <div class="occidental langue selected">occidental</div>
+
+    </div>
+<br>
+
 
 
     <script type="text/javascript" src="script.js"></script>

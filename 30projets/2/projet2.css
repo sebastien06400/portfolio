@@ -132,42 +132,42 @@ left: 216px;
   left: 135px;
 
 }
-  
-.stop {
-  position: relative;
-  top: 30vh;
-  right: -5vh;
+
+.langues {
+  display: flex;
+  justify-content: center;
 }
 
-.playing {
-  border-color: white;
-  transform: scale(1.2);
-  background-color: rgba(190, 190, 190, 0.08);
+.langue {
+  border: 1px black solid;
+  background-color: white;
+  font-size: 16px;
+  margin: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+.langue:hover {
+  background-color: indianred;
 }
 
-.lyrics {
-  position: absolute;
-  top: 40vh;
-  color:rgba(255, 255, 255, 0.53);
+.selected {
+  background-color: indianred;
+}
+
+
+.alarme {
+ text-align: center; 
+ font-size: 20px;
+}
+.alarm-input {
+
+}
+
+.boutton-langues {
   text-align: center;
-  display: none;
+  margin: 0 50%;
 }
-
-.stretch {
-  height: 200vh;
-}
-
-.display {
-  display: block;
-  opacity: 0;
-  transition: all 5.27s ease;
-
-}
-
-.delayed-display {
-  opacity: 1;
-}
-
+  
 .hidden {
   display: none;
 }
