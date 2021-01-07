@@ -38,3 +38,8 @@
     width: 700px;
     text-align: center;
   }
+
+  .exit {
+      position: relative;
+      left: -200px;
+  }
