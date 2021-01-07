@@ -1,0 +1,40 @@
+:root {
+
+    --xxx: 100px;
+    --yyy: 700px;
+    --pic1x: 100px;
+    --pic1y: 200px;
+    --pic2x: 200px;
+    --pic2y: 200px;
+
+}
+
+.folder {
+    position: absolute;
+    top: var(--xxx);
+    left: var(--yyy);
+}
+
+.pic1 {
+    position: absolute;
+    top: var(--pic1x);
+    left: var(--pic1y);
+}
+
+.pic2 {
+    position: absolute;
+    top: var(--pic2x);
+    left: var(--pic2y);
+}
+
+  
+.hidden {
+    display: none;
+  }
+
+  h3 {
+    position: relative;
+    left: -300px;
+    width: 700px;
+    text-align: center;
+  }
