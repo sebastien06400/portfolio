@@ -1,0 +1,130 @@
+body {
+    height: 100vh;
+    width: 200vh;
+    border: green solid 2px;
+}
+
+.players {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    /* width:100%; */
+    font-size: 5vh;
+    z-index: -5;
+    position: absolute;
+    background-color: black;
+}
+
+.player-line {
+    display: flex;
+    flex: 1;
+    font-size: 5vh;
+    width:200vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.pannels {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    /* width:100%; */
+    font-size: 5vh;
+    z-index: 5;
+}
+
+.pannel-line {
+    display: flex;
+    /* width:100%; */
+    flex: 1;
+    /* width:100%; */
+    font-size: 5vh;
+    /* border: yellow 1px solid; */
+}
+
+.pannel {
+    flex: 1;
+    display:flex;    
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.7s;
+    /* border: black 1px solid; */
+}
+
+.left {
+    justify-content: end;
+}
+.right {
+    justify-content: start;
+}
+
+.att {
+    background-color: red;
+}
+.mil {
+    background-color: orangered;
+}
+.def {
+    background-color: rebeccapurple;
+}
+.gar {
+    background-color: green;
+}
+
+.open {
+    transform: translateX(-100%);
+}
+.open-right {
+    transform: translateX(100%);
+}
+
+
+
+
+
+
+:root {
+
+    --xxx: 100px;
+    --yyy: 700px;
+    --pic1x: 100px;
+    --pic1y: 200px;
+    --pic2x: 200px;
+    --pic2y: 200px;
+
+}
+
+.folder {
+    position: absolute;
+    top: var(--xxx);
+    left: var(--yyy);
+}
+
+.pic1 {
+    position: absolute;
+    top: var(--pic1x);
+    left: var(--pic1y);
+}
+
+.pic2 {
+    position: absolute;
+    top: var(--pic2x);
+    left: var(--pic2y);
+}
+
+  
+.hidden {
+    display: none;
+  }
+
+  h3 {
+    position: relative;
+    left: -300px;
+    width: 700px;
+    text-align: center;
+  }
+
+  .exit {
+      position: relative;
+      left: -200px;
+  }
