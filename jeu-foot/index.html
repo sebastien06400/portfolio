@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+    <div id="vue1">
+        <!-- <h2>TEAM :</h2><br>  -->
+        <router-view> </router-view>
+    </div><br><br>
+    <script type="text/x-template" id="home">
+
+        <div>
+            <!-- <div class="budget" >BUDGET : {{budget}}</div> -->
+            <!-- <h2>Ma team  : </h2>  -->
+            <div class="flex-list">
+
+                <div class="element-list" v-for="player, id in PLAYERS" v-bind:key="player.id">
+                    <img v-bind:src="player.photo" v-bind:name="player.name"  @click="add(id)" width="100px">  
+                    <br>{{ player.name }}<br>Att : {{player.att}}<br> Def : {{player.def}}
+                </div>
+            </div>
+            <div v-if="!victory"> <br> <br>
+                
+                <h2>MATCH :</h2>
+                <h3 style="color:green">{{matchTitle[winsInARow]}}</h3>
+                <div class="flex-list column">
+                    <div><h1>{{marques}} - {{encaisses}}</h1></div>
+                    <div>
+                        <h1>{{ballonResult}}</h1>
+
+                        
+                        <button class="big-button" v-if="launched == false" @click="startMatch">Lancer un match</button>
+                        
+                        
+                        
+                        <an-event @tir="tirAction" @passe="passeAction" v-bind:content="minutePlaying" v-bind:PLAYERS="PLAYERS" v-bind:probaTir="probaTir" v-bind:proba="proba" v-bind:idPasse1="idPasse1" v-bind:idPasse2="idPasse2" v-bind:idCurrentPlayer="idCurrentPlayer" v-bind:eventType="eventType" v-bind:ready="ready" v-if="launched == true && eventType > 0"></an-event>
+                        
+                        
+                        <button class="big-button" v-if="launched == true && minutePlaying < 91 && minutePlaying > 0" @click="continueMatch">Continuer le match</button>
+
+                        <!-- <an-event @tir="tirAction" @passe="passeAction" v-bind:content="minutePlaying" v-bind:PLAYERS="PLAYERS" v-bind:probaTir="probaTir" v-bind:proba="proba" v-bind:idPasse1="idPasse1" v-bind:idPasse2="idPasse2" v-bind:idCurrentPlayer="idCurrentPlayer" v-if="launched == true && eventNumber == 2"></an-event> -->
+
+                        <!-- <an-event2 @tir="tirAction" @passe="passeAction" v-bind:content="minutePlaying" v-bind:PLAYERS="PLAYERS" v-bind:probaTir="probaTir" v-bind:proba="proba" v-bind:idPasse1="idPasse1" v-bind:idCurrentPlayer="idCurrentPlayer" v-if="launched == true && eventNumber == 1 && eventType == 2"></an-event2>
+                        <an-event2 @tir="tirAction" @passe="passeAction" v-bind:content="minutePlaying" v-bind:PLAYERS="PLAYERS" v-bind:probaTir="probaTir" v-bind:proba="proba" v-bind:idPasse1="idPasse1" v-bind:idCurrentPlayer="idCurrentPlayer" v-if="launched == true && eventNumber == 2 && eventType == 2"></an-event2>
+
+                        
+                        <an-event3 @tir="tirAction" @passe="passeAction" v-bind:content="minutePlaying" v-bind:PLAYERS="PLAYERS" v-bind:probaTir="probaTir" v-bind:proba="proba" v-bind:idCurrentPlayer="idCurrentPlayer" v-if="launched == true && eventNumber == 1 && eventType == 3"></an-event3>
+                        <an-event3 @tir="tirAction" @passe="passeAction" v-bind:content="minutePlaying" v-bind:PLAYERS="PLAYERS" v-bind:probaTir="probaTir" v-bind:proba="proba" v-bind:idCurrentPlayer="idCurrentPlayer" v-if="launched == true && eventNumber == 2 && eventType == 3"></an-event3> -->
+                        <!-- <div class="event">{{anEvent}}   {{minutePlaying}}'</div> -->
+                    </div>
+                </div>
+            </div>
+            <div v-if="victory"> <img src="coupe.gif" alt="" width="150px"></div>
+            <div>
+                <!-- <button v-if="launched==true && deciding==false" @click="">CONTINUER</button> <br><br><br><br> -->
+            </div>
+        </div>
+
+
+    </script>
+
+
+
+
+
+
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+        <!-- <div>
+            <div class="budget" >BUDGET : {{budget}}</div>
+            <h2>En vente  : </h2> 
+            <div class="flex-list">
+                <div class="element-list" v-for="player, id in PLAYERS" v-bind:key="player.id">
+                    <img v-bind:src="player.photo" v-bind:name="player.name"  @click="add(id)">  
+                    <br>{{ player.name }}<br>{{player.price}}€<br>Att : {{player.att}}<br> Def : {{player.def}}
+                </div>
+            </div>
+            <div>
+            <h2>SHOPPING LIST :</h2><br>
+            <div class="flex-list">
+                <div class="element-list" v-for="player, id in SHOPPINGLIST" v-bind:key="player.id">
+                    <img v-bind:src="player.photo" v-bind:name="player.name"  @click="remove(id)"> 
+                    <br>{{ player.name }} <br> {{player.price}}€ <br>Att : {{player.att}} <br> Def : {{player.def}}
+                </div>
+            </div>
+            </div>
+            <div>
+                <button @click="save">ENREGISTRER</button> <br><br><br><br>
+            </div>
+        </div> -->
