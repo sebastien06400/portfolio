@@ -36,7 +36,7 @@ const Creation = {
             Att: {{this.playerAtt}} <div v-if="xpPoints>0"> <input @click="toggleAttPoint" type="checkbox" class="att-point point"> <input @click="toggleAttPoint" type="checkbox" class="att-point point"> <input @click="toggleAttPoint" type="checkbox" class="att-point point"> <input v-if="playerAtt>1" @click="toggleAttPoint" type="checkbox" class="att-point point"> <input v-if="playerAtt>2" @click="toggleAttPoint" type="checkbox" class="att-point point"></div><br>
             Def: {{this.playerDef}} <div v-if="xpPoints>0"> <input @click="toggleDefPoint" type="checkbox" class="def-point point"> <input @click="toggleDefPoint" type="checkbox" class="def-point point"> <input v-if="playerDef>2" @click="toggleDefPoint" type="checkbox" class="def-point point"> <input v-if="playerDef>4" @click="toggleDefPoint" type="checkbox" class="def-point point"></div><br>
             <div v-if="xpPoints>0">Points: <span style="color:blue; font-size:20px">{{xpPoints}}</span></div>
-            <button v-if="xpPoints===0 && playerName!=='' && poste!==''" @click="createPlayer">CREER!</button>
+            <div><button class="button-create" v-if="xpPoints===0 && playerName!=='' && poste!==''" @click="createPlayer">Créer {{playerName}} <i class="fa fa-user-plus" aria-hidden="true"></i> </button></div>
         </div>
         <createdMod v-if="creatingPlayer === false && showModal === true" @close="showModal = false" v-bind:playerName="playerName">OOOOOOOIKké</createdMod>
 
@@ -50,7 +50,7 @@ const Creation = {
             defPoint: 0,
             playerAtt: 1,
             playerDef: 1,
-            xpPoints: 15,
+            xpPoints: 1,
             attPointsNeeded: 3,
             defPointsNeeded: 2,
             creatingPlayer: true,

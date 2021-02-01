@@ -80,10 +80,20 @@ input[type=checkbox]
     font-size: 20px;
     height: 60px;
 }
+
 .big-button:hover {
 cursor: pointer
 }
 
+.button-create {
+  font-size: 20px;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.button-create:hover {
+  cursor: pointer
+  }
 
 .min {
     color:blue;
