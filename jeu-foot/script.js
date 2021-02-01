@@ -50,7 +50,7 @@ const Creation = {
             defPoint: 0,
             playerAtt: 1,
             playerDef: 1,
-            xpPoints: 1,
+            xpPoints: 12,
             attPointsNeeded: 3,
             defPointsNeeded: 2,
             creatingPlayer: true,
