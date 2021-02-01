@@ -15,9 +15,164 @@ const PLAYERS = [
 { name: "Mandanda", price: 10000000, lvl: 1, att: 1, def: 30, chance: 10, photo: "Mandanda.png", id: 11}
 ]
 
-const Home = {
-    template: "#home", 
-    name: "home",
+// let generalXpPoints = 0; 
+
+const Creation = {
+    template: `
+    <div>
+        <h1>CREATION D'UN JOUEUR</h1>
+        <div v-if="creatingPlayer===true">
+            Nom du joueur <input v-model="playerName"> 
+            <br> <br>
+            <select name="Poste" id="select-poste" v-model="poste">
+            <option value="">--Choisissez un poste--</option>
+            <option value="gardien">Gardien</option>
+            <option value="defenseur">Défenseur</option>
+            <option value="milieu">Milieu</option>
+            <option value="attaquant">Attaquant</option>
+            <option value="staff">Staff</option>
+            </select>
+            <br><br>
+            Att: {{this.playerAtt}} <div v-if="xpPoints>0"> <input @click="toggleAttPoint" type="checkbox" class="att-point point"> <input @click="toggleAttPoint" type="checkbox" class="att-point point"> <input @click="toggleAttPoint" type="checkbox" class="att-point point"> <input v-if="playerAtt>1" @click="toggleAttPoint" type="checkbox" class="att-point point"> <input v-if="playerAtt>2" @click="toggleAttPoint" type="checkbox" class="att-point point"></div><br>
+            Def: {{this.playerDef}} <div v-if="xpPoints>0"> <input @click="toggleDefPoint" type="checkbox" class="def-point point"> <input @click="toggleDefPoint" type="checkbox" class="def-point point"> <input v-if="playerDef>2" @click="toggleDefPoint" type="checkbox" class="def-point point"> <input v-if="playerDef>4" @click="toggleDefPoint" type="checkbox" class="def-point point"></div><br>
+            <div v-if="xpPoints>0">Points: <span style="color:blue; font-size:20px">{{xpPoints}}</span></div>
+            <button v-if="xpPoints===0 && playerName!=='' && poste!==''" @click="createPlayer">CREER!</button>
+        </div>
+        <createdMod v-if="creatingPlayer === false && showModal === true" @close="showModal = false" v-bind:playerName="playerName">OOOOOOOIKké</createdMod>
+
+    </div>`, 
+    name: "creation",
+    data() {
+        return {
+            playerName: "",
+            poste: "",
+            attPoint: 0,
+            defPoint: 0,
+            playerAtt: 1,
+            playerDef: 1,
+            xpPoints: 15,
+            attPointsNeeded: 3,
+            defPointsNeeded: 2,
+            creatingPlayer: true,
+            showModal: false,
+        }
+    },
+    components: {
+        'createdMod': {
+            props: ["playerName"],
+            template: `
+            <div class="modal-mask">
+            <div class="modal-wrapper">
+              <div class="modal-container">
+                <div class="modal-body">
+                    <div class="events flex-list column">
+                        <span style="color:green">{{playerName}}</span> vient d'être créé !
+                        <div class="modal-header"></br>
+                        Il est disponible dans tes joueurs.
+                      </div>
+                    </div>
+                    <button class="modal-default-button" @click="$emit('close')">
+                    OK
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>`
+        }
+    },
+    methods: {
+        toggleAttPoint() {
+            if (event.target.checked) { 
+                this.attPoint += 1; 
+                this.xpPoints -=1
+            } else { 
+                this.attPoint -=1; 
+                this.xpPoints +=1
+            }
+            if (this.attPoint === this.attPointsNeeded) {
+                this.playerAtt += 1;
+                let attInputs = document.querySelectorAll(".att-point")
+                Array.from(attInputs).forEach((input)=>{input.checked=false})
+                this.attPoint = 0;
+                if (this.playerAtt === 1) {this.attPointsNeeded+=1}
+                if (this.playerAtt === 2) {this.attPointsNeeded+=1}
+                if (this.playerAtt === 3) {this.attPointsNeeded+=1}
+
+            }
+        },
+        toggleDefPoint() {
+            if (event.target.checked) { 
+                this.defPoint += 1; 
+                this.xpPoints -=1
+            } else { 
+                this.defPoint -=1; 
+                this.xpPoints +=1
+            }
+                if (this.defPoint === this.defPointsNeeded) {
+                this.playerDef += 1;
+                let attInputs = document.querySelectorAll(".def-point")
+                Array.from(attInputs).forEach((input)=>{input.checked=false})
+                this.defPoint = 0;
+                if (this.playerDef === 3) {this.defPointsNeeded+=1}
+                if (this.playerDef === 5) {this.defPointsNeeded+=1}
+
+            }
+        },
+        createPlayer() {
+            PLAYERS.push({ name: this.playerName, price: 1000, lvl: 1, att: this.playerAtt, def: this.playerDef, chance: 1, photo: "player.png", id: PLAYERS.length +1});
+            this.creatingPlayer = false;
+            this.showModal = true;
+        }
+
+    },
+    mounted() {
+        if(localStorage.playerName) this.playerName = localStorage.playerName;
+        if(localStorage.poste) this.poste = localStorage.poste;
+        },
+
+    watch:{
+      playerName(newName) {
+      localStorage.playerName = newName;
+    },
+    poste(newposte) {
+        localStorage.poste = newposte;
+    }
+  
+  }
+
+}
+
+const Mesjoueurs = {
+    template: `
+    <div>
+        <h1>LISTE DE MES JOUEURS</h1><br>
+        <div v-for="player in PLAYERS" class="flex-list">  
+            <img v-bind:src="player.photo" v-bind:name="player.name" width="100px">
+            <div class="flex-list column">
+                <div>{{player.name}} </div>
+                <div>
+                    Att: {{player.att}} <input type="checkbox" id="att-point" class="point"> 	<label for="point"></label> <input type="checkbox" id="att-point2" class="point"> <input type="checkbox" id="att-point3" class="point">
+                </div>
+                <div>
+                    Def: {{player.def}} <input type="checkbox" id="def-point" class="point"> <input type="checkbox" id="def-point2" class="point"> <input type="checkbox" id="def-point3" class="point">
+                </div>
+            </div> 
+        </div>
+    </div>`,
+    name: "mesjoueurs",
+    data() {
+        return {
+            PLAYERS:PLAYERS,
+        }
+    }
+
+}
+
+
+
+const Match = {
+    template: "#match", 
+    name: "match",
     data() {
         return { 
             PLAYERS:PLAYERS,
@@ -56,9 +211,7 @@ const Home = {
             <div class="modal-mask">
             <div class="modal-wrapper">
               <div class="modal-container">
-  
 
-  
                 <div class="modal-body">
                   <slot name="body">
                     <div class="events flex-list column">
@@ -192,9 +345,9 @@ const Home = {
 
             } 
             // this.playMatch()
-            this.idCurrentPlayer = this.randomNumber(10) -1
-            this.idPasse1 = this.randomNumber(10) -1
-            this.idPasse2 = this.randomNumber(10) -1
+            this.idCurrentPlayer = this.randomNumber(PLAYERS.length) -1
+            this.idPasse1 = this.randomNumber(PLAYERS.length) -1
+            this.idPasse2 = this.randomNumber(PLAYERS.length) -1
             this.eventType = 0
             this.probaTir = this.randomProba()*this.randomProba();
         },
@@ -218,7 +371,7 @@ const Home = {
                     this.eventType = 2
                     this.ballonResult="";
                     this.idCurrentPlayer = event.target.id 
-                    this.idPasse1 = this.randomNumber(10)
+                    this.idPasse1 = this.randomNumber(PLAYERS.length)
                     this.probaTir = this.randomProba()*this.randomProba();
 
                 } else {
@@ -239,8 +392,10 @@ const Notes = {
 //router
 const router = new VueRouter({
     routes: [
-        { path: "/", component: Home, name: "home" }
-        // { path: "/notes", component: Notes, name: "notes" }
+        // { path: "/", component: Home, name: "home" },
+        { path: "/creation", component: Creation, name: "creation" },
+        { path: "/mesjoueurs", component: Mesjoueurs},
+        { path: "/match", component: Match}
     ]
 })
 
@@ -252,6 +407,13 @@ const vue1 = new Vue({
         showModal: false
     }
 }).$mount("#vue1")
+
+// const vueAchats = new Vue({
+//     router,
+//     data: {
+//         showModal: false
+//     }
+// }).$mount("#vueAchats")
 
 // Vue.component('an-event', {
 //     // data: function () {
